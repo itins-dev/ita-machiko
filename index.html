@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Italian Lessons — Beginner Travel Series</title>
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-light: #52b788;
+      --green-pale: #d8f3dc;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f8f5f0;
+      color: #1b1b1b;
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .flag { font-size: 3rem; display: block; margin-bottom: .5rem; }
+
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; }
+
+    header p { margin-top: .4rem; opacity: .85; font-size: .95rem; }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .section-label {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .lessons {
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+    }
+
+    .lesson-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1.1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      border: 2px solid transparent;
+      transition: border-color .15s, box-shadow .15s;
+    }
+
+    .lesson-card:hover {
+      border-color: var(--green-light);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .lesson-card.available:hover { cursor: pointer; }
+
+    .lesson-card.locked {
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .lesson-num {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .lesson-card.locked .lesson-num {
+      background: var(--border);
+      color: var(--muted);
+    }
+
+    .lesson-info { flex: 1; }
+
+    .lesson-info h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .lesson-info p {
+      font-size: .83rem;
+      color: var(--muted);
+      margin-top: .15rem;
+    }
+
+    .lesson-arrow {
+      font-size: 1.1rem;
+      color: var(--green-light);
+    }
+
+    .lesson-card.locked .lesson-arrow {
+      font-size: .9rem;
+      color: var(--border);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="flag">🇮🇹</span>
+  <h1>Italian — Beginner Travel Series</h1>
+  <p>5 lessons · 30 minutes each · Italy-bound</p>
+</header>
+
+<main>
+
+  <p class="section-label">All lessons</p>
+
+  <div class="lessons">
+
+    <a href="lesson-1.html" class="lesson-card available">
+      <div class="lesson-num">1</div>
+      <div class="lesson-info">
+        <h2>Greetings &amp; Polite Phrases</h2>
+        <p>Ciao, Buongiorno, Per favore, Mi scusi — survival basics</p>
+      </div>
+      <span class="lesson-arrow">→</span>
+    </a>
+
+    <a href="lesson-2.html" class="lesson-card available">
+      <div class="lesson-num">2</div>
+      <div class="lesson-info">
+        <h2>Self-Introductions</h2>
+        <p>Mi chiamo…, Sono di…, Piacere — meeting people</p>
+      </div>
+      <span class="lesson-arrow">→</span>
+    </a>
+
+    <a href="lesson-3.html" class="lesson-card available">
+      <div class="lesson-num">3</div>
+      <div class="lesson-info">
+        <h2>Numbers &amp; Money</h2>
+        <p>1–100, Quanto costa? — prices and change</p>
+      </div>
+      <span class="lesson-arrow">→</span>
+    </a>
+
+    <a href="lesson-4.html" class="lesson-card available">
+      <div class="lesson-num">4</div>
+      <div class="lesson-info">
+        <h2>Shopping</h2>
+        <p>Vorrei…, Posso provarlo? — sizes, colours, buying things</p>
+      </div>
+      <span class="lesson-arrow">→</span>
+    </a>
+
+    <div class="lesson-card locked">
+      <div class="lesson-num">5</div>
+      <div class="lesson-info">
+        <h2>Hotel Conversations</h2>
+        <p>Ho una prenotazione — check-in, check-out, asking for help</p>
+      </div>
+      <span class="lesson-arrow">🔒</span>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  Italian Lesson Plan · Beginner Travel Series
+</footer>
+
+</body>
+</html>
