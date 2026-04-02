@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Italian Lesson 4 — Shopping</title>
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-light: #52b788;
+      --green-pale: #d8f3dc;
+      --red: #c1121f;
+      --red-pale: #fde8e8;
+      --text: #1b1b1b;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f8f5f0;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+
+    .back:hover { color: #fff; }
+
+    .flag { font-size: 3rem; display: block; margin-bottom: .5rem; }
+
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; }
+    header p { margin-top: .4rem; opacity: .85; font-size: .95rem; }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: .6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 99px;
+      padding: .25rem .8rem;
+      font-size: .8rem;
+      letter-spacing: .03em;
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .objective {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green-light);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: .95rem;
+    }
+
+    .objective strong { color: var(--green); }
+
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title { flex: 1; }
+    .section-title h2 { font-size: 1rem; font-weight: 700; line-height: 1.3; }
+    .section-title .sub { font-size: .8rem; color: var(--muted); }
+
+    .duration {
+      font-size: .78rem;
+      background: var(--green-pale);
+      color: var(--green);
+      border-radius: 99px;
+      padding: .2rem .65rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section-body { padding: 1.1rem 1.25rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .92rem;
+      margin-top: .75rem;
+    }
+
+    thead tr { background: var(--green-pale); }
+
+    th {
+      text-align: left;
+      padding: .5rem .75rem;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    td { padding: .55rem .75rem; border-top: 1px solid var(--border); }
+    tr:hover td { background: #fafafa; }
+
+    .italian { font-weight: 600; font-style: italic; color: #1a3a2a; }
+    .note-cell { font-size: .82rem; color: var(--muted); }
+
+    .tip {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: .75rem 1rem;
+      font-size: .87rem;
+      margin-top: 1rem;
+    }
+
+    .tip::before { content: '💡 '; }
+
+    .roleplay {
+      background: var(--red-pale);
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: .85rem 1rem;
+      font-size: .9rem;
+      margin-top: .75rem;
+    }
+
+    .roleplay strong {
+      display: block;
+      color: var(--red);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .3rem;
+    }
+
+    .dialogue {
+      background: #f8faff;
+      border: 1px solid #c7d7f5;
+      border-radius: 8px;
+      padding: .9rem 1.1rem;
+      margin-top: .85rem;
+      font-size: .9rem;
+    }
+
+    .dialogue .d-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: #4a6fa5;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .dialogue .line { margin-bottom: .3rem; }
+    .dialogue .line:last-child { margin-bottom: 0; }
+
+    .dialogue .speaker {
+      font-size: .78rem;
+      color: var(--muted);
+      min-width: 5rem;
+      display: inline-block;
+    }
+
+    /* ── Colour swatches ── */
+    .colour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .5rem;
+      margin-top: .75rem;
+    }
+
+    .colour-card {
+      border-radius: 8px;
+      padding: .55rem .85rem;
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      border: 1px solid var(--border);
+      font-size: .88rem;
+    }
+
+    .swatch {
+      width: 1.1rem;
+      height: 1.1rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,.12);
+    }
+
+    .colour-card .w { font-style: italic; font-weight: 600; color: #1a3a2a; }
+
+    .homework-list { list-style: none; padding: 0; }
+
+    .homework-list li {
+      display: flex;
+      gap: .6rem;
+      padding: .45rem 0;
+      font-size: .92rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .homework-list li:first-child { border-top: none; }
+    .hw-icon { flex-shrink: 0; }
+
+    .teacher-notes {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .teacher-notes h3 {
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--green);
+      margin-bottom: .6rem;
+    }
+
+    .teacher-notes ul { padding-left: 1.2rem; font-size: .9rem; }
+    .teacher-notes li { margin-bottom: .35rem; }
+
+    .roadmap { margin-top: 2.5rem; }
+
+    .roadmap h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .roadmap-list { display: flex; flex-direction: column; gap: .6rem; }
+
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: #fff;
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      box-shadow: var(--shadow);
+      font-size: .9rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .roadmap-item.active {
+      border: 2px solid var(--green-light);
+      background: var(--green-pale);
+    }
+
+    .roadmap-item.done { opacity: .7; }
+
+    .roadmap-dot {
+      width: .65rem;
+      height: .65rem;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .roadmap-item.active .roadmap-dot,
+    .roadmap-item.done .roadmap-dot { background: var(--green); }
+
+    .roadmap-item .lesson-label {
+      font-size: .75rem;
+      color: var(--muted);
+      min-width: 4.5rem;
+    }
+
+    .roadmap-item.active .lesson-label { color: var(--green); font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back">← All lessons</a>
+  <span class="flag">🇮🇹</span>
+  <h1>Lesson 4 — Shopping</h1>
+  <p>Boutiques · Markets · Asking &amp; Buying · Beginner</p>
+  <div class="badges">
+    <span class="badge">⏱ 30 minutes</span>
+    <span class="badge">🎯 Beginner</span>
+    <span class="badge">✈️ Italy-bound</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="objective">
+    <strong>Lesson objective:</strong> By the end, she can walk into any Italian shop, ask for what she wants, request a size or colour, try something on, and complete the purchase — all in Italian.
+  </div>
+
+  <!-- 1. Warm-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title">
+        <h2>Warm-up — Numbers &amp; Money Review</h2>
+        <div class="sub">Reconnect with lesson 3</div>
+      </div>
+      <span class="duration">3 min</span>
+    </div>
+    <div class="section-body">
+      <p>Quick price-reading drill: write 4–5 prices on paper (€7, €23,50, €64, €12,90) and have her say them in Italian. Then ask: <em>"You walk into a clothes shop in Florence. What would you want to be able to say?"</em></p>
+      <p style="margin-top:.5rem">Her answer sets the agenda and makes the lesson feel personally relevant.</p>
+    </div>
+  </div>
+
+  <!-- 2. Asking for things -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title">
+        <h2>Asking for What You Want</h2>
+        <div class="sub">The most useful frame in any shop</div>
+      </div>
+      <span class="duration">7 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">Vorrei…</td><td>I'd like… (polite, very natural)</td></tr>
+          <tr><td class="italian">Cerco…</td><td>I'm looking for…</td></tr>
+          <tr><td class="italian">Avete…?</td><td>Do you have…?</td></tr>
+          <tr><td class="italian">Mi può mostrare…?</td><td>Can you show me…?</td></tr>
+          <tr><td class="italian">Sto solo guardando</td><td>I'm just browsing</td></tr>
+          <tr><td class="italian">Posso aiutarla?</td><td>Can I help you? (what staff will say)</td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><em>Vorrei</em> is the go-to phrase — more polite than <em>voglio</em> (I want) and used constantly. Drill it with different items: <em>Vorrei una borsa, Vorrei questo, Vorrei quello.</em></div>
+
+      <div class="roleplay">
+        <strong>Mini drill</strong>
+        You play a shop assistant greeting her (<em>Posso aiutarla?</em>). She responds using <em>Vorrei</em> or <em>Cerco</em> with any item she can name. Repeat 3–4 times with different items.
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Sizes -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title">
+        <h2>Sizes &amp; Trying Things On</h2>
+        <div class="sub">Clothes shopping essentials</div>
+      </div>
+      <span class="duration">6 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">Posso provarlo/a?</td><td>Can I try it on? (<em>-o</em> masc. / <em>-a</em> fem.)</td></tr>
+          <tr><td class="italian">Dov'è il camerino?</td><td>Where is the fitting room?</td></tr>
+          <tr><td class="italian">Che taglia è?</td><td>What size is it?</td></tr>
+          <tr><td class="italian">Avete una taglia più grande?</td><td>Do you have a bigger size?</td></tr>
+          <tr><td class="italian">Avete una taglia più piccola?</td><td>Do you have a smaller size?</td></tr>
+          <tr><td class="italian">Mi sta bene</td><td>It fits me well</td></tr>
+          <tr><td class="italian">Non mi sta bene</td><td>It doesn't fit me</td></tr>
+          <tr><td class="italian">È troppo grande / piccolo</td><td>It's too big / small</td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><strong>Italian sizing:</strong> clothing uses European sizes (38, 40, 42…). It's worth her knowing her Italian size before the trip — avoids confusion at the fitting room.</div>
+    </div>
+  </div>
+
+  <!-- 4. Colours -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title">
+        <h2>Colours</h2>
+        <div class="sub">Asking for a different colour or spotting one on a tag</div>
+      </div>
+      <span class="duration">5 min</span>
+    </div>
+    <div class="section-body">
+      <div class="colour-grid">
+        <div class="colour-card"><span class="swatch" style="background:#e53935"></span><span class="w">rosso</span> — red</div>
+        <div class="colour-card"><span class="swatch" style="background:#1e88e5"></span><span class="w">blu</span> — blue</div>
+        <div class="colour-card"><span class="swatch" style="background:#43a047"></span><span class="w">verde</span> — green</div>
+        <div class="colour-card"><span class="swatch" style="background:#fdd835"></span><span class="w">giallo</span> — yellow</div>
+        <div class="colour-card"><span class="swatch" style="background:#fb8c00"></span><span class="w">arancione</span> — orange</div>
+        <div class="colour-card"><span class="swatch" style="background:#8e24aa"></span><span class="w">viola</span> — purple</div>
+        <div class="colour-card"><span class="swatch" style="background:#f8bbd0"></span><span class="w">rosa</span> — pink</div>
+        <div class="colour-card"><span class="swatch" style="background:#212121"></span><span class="w">nero</span> — black</div>
+        <div class="colour-card"><span class="swatch" style="background:#f5f5f5;border-color:#ccc"></span><span class="w">bianco</span> — white</div>
+        <div class="colour-card"><span class="swatch" style="background:#9e9e9e"></span><span class="w">grigio</span> — grey</div>
+        <div class="colour-card"><span class="swatch" style="background:#795548"></span><span class="w">marrone</span> — brown</div>
+        <div class="colour-card"><span class="swatch" style="background:#b2dfdb"></span><span class="w">beige</span> — beige</div>
+      </div>
+      <div class="tip">Teach the frame: <em>Avete questo in [colour]?</em> — Do you have this in [colour]? One pattern, infinite use.</div>
+    </div>
+  </div>
+
+  <!-- 5. Role-play -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title">
+        <h2>Putting It Together — Boutique Role-Play</h2>
+        <div class="sub">Full shop visit from entry to purchase</div>
+      </div>
+      <span class="duration">7 min</span>
+    </div>
+    <div class="section-body">
+      <div class="roleplay">
+        <strong>Scenario</strong>
+        She enters a small clothes shop in Florence. A staff member greets her. She says she's browsing, then asks about a dress, requests her size, asks to try it on, says it's too big and asks for a smaller one, then asks the price and decides to buy it.
+      </div>
+
+      <div class="dialogue">
+        <div class="d-label">Sample exchange</div>
+        <div class="line"><span class="speaker">Staff (you):</span> <em>Buongiorno! Posso aiutarla?</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Buongiorno! Sto solo guardando, grazie.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Scusi — vorrei questo vestito. Avete la taglia 42?</em></div>
+        <div class="line"><span class="speaker">Staff:</span> <em>Sì, certo. Eccola.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Posso provarlo?</em></div>
+        <div class="line"><span class="speaker">Staff:</span> <em>Certo, il camerino è là.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>È troppo grande. Avete una taglia più piccola?</em></div>
+        <div class="line"><span class="speaker">Staff:</span> <em>Sì, ecco la 40.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Mi sta bene! Quanto costa?</em></div>
+        <div class="line"><span class="speaker">Staff:</span> <em>Sessantacinque euro.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Bene, lo prendo. Posso pagare con carta?</em></div>
+      </div>
+
+      <p style="margin-top:.85rem;font-size:.92rem">Run it twice. On the second pass, change the item and colour — keep her adapting, not just reciting.</p>
+    </div>
+  </div>
+
+  <!-- 6. Wrap-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title">
+        <h2>Wrap-up &amp; Homework</h2>
+        <div class="sub">Review and build confidence before the trip</div>
+      </div>
+      <span class="duration">2 min</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:.9rem;margin-bottom:.75rem">Quick runthrough: you say English, she says Italian — mix phrases from all four lessons so far.</p>
+      <ul class="homework-list">
+        <li>
+          <span class="hw-icon">🛍️</span>
+          <span>Next time she's in any shop, mentally rehearse the shopping dialogue — even in English, mapping it to Italian phrases.</span>
+        </li>
+        <li>
+          <span class="hw-icon">🎨</span>
+          <span>Learn her colours cold — look around the room right now and name 5 things in Italian. Do this daily.</span>
+        </li>
+        <li>
+          <span class="hw-icon">📏</span>
+          <span>Look up her Italian clothing size before lesson 5 — she'll need it in the role-plays.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Teacher notes -->
+  <div class="teacher-notes">
+    <h3>Teacher Notes</h3>
+    <ul>
+      <li>Don't get into grammatical gender for adjectives (rosso/rossa, etc.) — it's too much at this stage. Just teach the base form and move on.</li>
+      <li>The role-play in section 5 is dense — if she's slower, trim the colour section (section 4) to 3 minutes and give the extra time to the role-play.</li>
+      <li><em>Lo prendo</em> (I'll take it) is a great phrase to add at the end of the role-play — natural, short, and satisfying to say.</li>
+      <li>If she has energy left: teach <em>È in saldo?</em> (Is it on sale?) and <em>Ha qualcosa di meno caro?</em> (Do you have something cheaper?) — useful and memorable.</li>
+    </ul>
+  </div>
+
+  <!-- Roadmap -->
+  <div class="roadmap">
+    <h2>Lesson Series — 5-week plan</h2>
+    <div class="roadmap-list">
+      <a href="lesson-1.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 1</span>
+        <span>Greetings &amp; Polite Phrases</span>
+      </a>
+      <a href="lesson-2.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 2</span>
+        <span>Self-Introductions — <em>Mi chiamo…, Sono di…, Piacere</em></span>
+      </a>
+      <a href="lesson-3.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 3</span>
+        <span>Numbers &amp; Money — 1–100, <em>Quanto costa?</em>, prices</span>
+      </a>
+      <div class="roadmap-item active">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 4 ←</span>
+        <span>Shopping — <em>Vorrei…, Posso provarlo?</em>, sizes &amp; colours</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 5</span>
+        <span>Hotel Conversations — check-in, <em>Ho una prenotazione</em>, asking for help</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Italian Lesson Plan · Beginner Travel Series
+</footer>
+
+</body>
+</html>
