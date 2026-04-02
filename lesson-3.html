@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Italian Lesson 3 — Numbers &amp; Money</title>
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-light: #52b788;
+      --green-pale: #d8f3dc;
+      --red: #c1121f;
+      --red-pale: #fde8e8;
+      --text: #1b1b1b;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f8f5f0;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+
+    .back:hover { color: #fff; }
+
+    .flag { font-size: 3rem; display: block; margin-bottom: .5rem; }
+
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; }
+
+    header p { margin-top: .4rem; opacity: .85; font-size: .95rem; }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: .6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 99px;
+      padding: .25rem .8rem;
+      font-size: .8rem;
+      letter-spacing: .03em;
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .objective {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green-light);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: .95rem;
+    }
+
+    .objective strong { color: var(--green); }
+
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title { flex: 1; }
+    .section-title h2 { font-size: 1rem; font-weight: 700; line-height: 1.3; }
+    .section-title .sub { font-size: .8rem; color: var(--muted); }
+
+    .duration {
+      font-size: .78rem;
+      background: var(--green-pale);
+      color: var(--green);
+      border-radius: 99px;
+      padding: .2rem .65rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section-body { padding: 1.1rem 1.25rem; }
+
+    /* ── Number grid ── */
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: .5rem;
+      margin-top: .75rem;
+    }
+
+    .num-card {
+      background: var(--green-pale);
+      border-radius: 8px;
+      padding: .55rem .75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: .5rem;
+    }
+
+    .num-card .n { font-size: 1.1rem; font-weight: 700; color: var(--green); }
+    .num-card .w { font-style: italic; font-size: .88rem; color: #1a3a2a; font-weight: 600; }
+
+    /* ── Tens grid ── */
+    .tens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: .5rem;
+      margin-top: .75rem;
+    }
+
+    .tens-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: .55rem .75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: .5rem;
+    }
+
+    .tens-card .n { font-size: 1rem; font-weight: 700; color: var(--green); }
+    .tens-card .w { font-style: italic; font-size: .88rem; color: #1a3a2a; font-weight: 600; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .92rem;
+      margin-top: .75rem;
+    }
+
+    thead tr { background: var(--green-pale); }
+
+    th {
+      text-align: left;
+      padding: .5rem .75rem;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    td { padding: .55rem .75rem; border-top: 1px solid var(--border); }
+
+    tr:hover td { background: #fafafa; }
+
+    .italian { font-weight: 600; font-style: italic; color: #1a3a2a; }
+    .note-cell { font-size: .82rem; color: var(--muted); }
+
+    .tip {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: .75rem 1rem;
+      font-size: .87rem;
+      margin-top: 1rem;
+    }
+
+    .tip::before { content: '💡 '; }
+
+    .roleplay {
+      background: var(--red-pale);
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: .85rem 1rem;
+      font-size: .9rem;
+      margin-top: .75rem;
+    }
+
+    .roleplay strong {
+      display: block;
+      color: var(--red);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .3rem;
+    }
+
+    .dialogue {
+      background: #f8faff;
+      border: 1px solid #c7d7f5;
+      border-radius: 8px;
+      padding: .9rem 1.1rem;
+      margin-top: .85rem;
+      font-size: .9rem;
+    }
+
+    .dialogue .d-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: #4a6fa5;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .dialogue .line { margin-bottom: .3rem; }
+    .dialogue .line:last-child { margin-bottom: 0; }
+
+    .dialogue .speaker {
+      font-size: .78rem;
+      color: var(--muted);
+      min-width: 5rem;
+      display: inline-block;
+    }
+
+    .homework-list { list-style: none; padding: 0; }
+
+    .homework-list li {
+      display: flex;
+      gap: .6rem;
+      padding: .45rem 0;
+      font-size: .92rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .homework-list li:first-child { border-top: none; }
+    .hw-icon { flex-shrink: 0; }
+
+    .teacher-notes {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .teacher-notes h3 {
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--green);
+      margin-bottom: .6rem;
+    }
+
+    .teacher-notes ul { padding-left: 1.2rem; font-size: .9rem; }
+    .teacher-notes li { margin-bottom: .35rem; }
+
+    .roadmap { margin-top: 2.5rem; }
+
+    .roadmap h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .roadmap-list { display: flex; flex-direction: column; gap: .6rem; }
+
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: #fff;
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      box-shadow: var(--shadow);
+      font-size: .9rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .roadmap-item.active {
+      border: 2px solid var(--green-light);
+      background: var(--green-pale);
+    }
+
+    .roadmap-item.done { opacity: .7; }
+
+    .roadmap-dot {
+      width: .65rem;
+      height: .65rem;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .roadmap-item.active .roadmap-dot,
+    .roadmap-item.done .roadmap-dot { background: var(--green); }
+
+    .roadmap-item .lesson-label {
+      font-size: .75rem;
+      color: var(--muted);
+      min-width: 4.5rem;
+    }
+
+    .roadmap-item.active .lesson-label { color: var(--green); font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back">← All lessons</a>
+  <span class="flag">🇮🇹</span>
+  <h1>Lesson 3 — Numbers &amp; Money</h1>
+  <p>Prices · Counting · Paying · Beginner</p>
+  <div class="badges">
+    <span class="badge">⏱ 30 minutes</span>
+    <span class="badge">🎯 Beginner</span>
+    <span class="badge">✈️ Italy-bound</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="objective">
+    <strong>Lesson objective:</strong> By the end, she can count to 100, understand prices out loud, ask how much something costs, and handle basic money exchanges at a market, café, or shop.
+  </div>
+
+  <!-- 1. Warm-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title">
+        <h2>Warm-up — Quick Review</h2>
+        <div class="sub">Recap lessons 1 &amp; 2, prime for numbers</div>
+      </div>
+      <span class="duration">3 min</span>
+    </div>
+    <div class="section-body">
+      <p>Run a 60-second flashcard drill on key phrases from lessons 1 and 2. Then ask: <em>"You're at a market stall and the vendor says a price. How do you understand it?"</em></p>
+      <p style="margin-top:.5rem">This creates the motivation — numbers aren't abstract, they're what she'll hear every time she pays for anything.</p>
+    </div>
+  </div>
+
+  <!-- 2. Numbers 1–20 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title">
+        <h2>Numbers 1–20</h2>
+        <div class="sub">The building blocks — must be automatic</div>
+      </div>
+      <span class="duration">8 min</span>
+    </div>
+    <div class="section-body">
+      <div class="number-grid">
+        <div class="num-card"><span class="n">1</span><span class="w">uno</span></div>
+        <div class="num-card"><span class="n">2</span><span class="w">due</span></div>
+        <div class="num-card"><span class="n">3</span><span class="w">tre</span></div>
+        <div class="num-card"><span class="n">4</span><span class="w">quattro</span></div>
+        <div class="num-card"><span class="n">5</span><span class="w">cinque</span></div>
+        <div class="num-card"><span class="n">6</span><span class="w">sei</span></div>
+        <div class="num-card"><span class="n">7</span><span class="w">sette</span></div>
+        <div class="num-card"><span class="n">8</span><span class="w">otto</span></div>
+        <div class="num-card"><span class="n">9</span><span class="w">nove</span></div>
+        <div class="num-card"><span class="n">10</span><span class="w">dieci</span></div>
+        <div class="num-card"><span class="n">11</span><span class="w">undici</span></div>
+        <div class="num-card"><span class="n">12</span><span class="w">dodici</span></div>
+        <div class="num-card"><span class="n">13</span><span class="w">tredici</span></div>
+        <div class="num-card"><span class="n">14</span><span class="w">quattordici</span></div>
+        <div class="num-card"><span class="n">15</span><span class="w">quindici</span></div>
+        <div class="num-card"><span class="n">16</span><span class="w">sedici</span></div>
+        <div class="num-card"><span class="n">17</span><span class="w">diciassette</span></div>
+        <div class="num-card"><span class="n">18</span><span class="w">diciotto</span></div>
+        <div class="num-card"><span class="n">19</span><span class="w">diciannove</span></div>
+        <div class="num-card"><span class="n">20</span><span class="w">venti</span></div>
+      </div>
+      <div class="tip">Drill 1–10 until automatic, then 11–20. Call out numbers at random — she responds. Focus on pronunciation: <em>cinque</em> (CHEEN-kweh), <em>sei</em> (SAY), <em>dieci</em> (dee-EH-chee).</div>
+    </div>
+  </div>
+
+  <!-- 3. Numbers 30–100 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title">
+        <h2>Tens: 30–100 &amp; How to Combine</h2>
+        <div class="sub">The pattern that unlocks all other numbers</div>
+      </div>
+      <span class="duration">6 min</span>
+    </div>
+    <div class="section-body">
+      <div class="tens-grid">
+        <div class="tens-card"><span class="n">30</span><span class="w">trenta</span></div>
+        <div class="tens-card"><span class="n">40</span><span class="w">quaranta</span></div>
+        <div class="tens-card"><span class="n">50</span><span class="w">cinquanta</span></div>
+        <div class="tens-card"><span class="n">60</span><span class="w">sessanta</span></div>
+        <div class="tens-card"><span class="n">70</span><span class="w">settanta</span></div>
+        <div class="tens-card"><span class="n">80</span><span class="w">ottanta</span></div>
+        <div class="tens-card"><span class="n">90</span><span class="w">novanta</span></div>
+        <div class="tens-card"><span class="n">100</span><span class="w">cento</span></div>
+      </div>
+      <div class="tip">
+        <strong>The rule:</strong> tens + units run together — <em>trenta</em> + <em>due</em> = <em>trentadue</em> (32). When the unit starts with a vowel (1, 8), drop the final vowel of the ten: <em>trent<s>a</s>uno</em> → <em>trentuno</em>, <em>trent<s>a</s>otto</em> → <em>trentotto</em>.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Money phrases -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title">
+        <h2>Money &amp; Prices</h2>
+        <div class="sub">Everything she needs to pay for things</div>
+      </div>
+      <span class="duration">7 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">Quanto costa?</td><td>How much does it cost?</td></tr>
+          <tr><td class="italian">Quanto costano?</td><td>How much do they cost? (plural)</td></tr>
+          <tr><td class="italian">Costa [x] euro</td><td>It costs [x] euros</td></tr>
+          <tr><td class="italian">Sono [x] euro</td><td>That's [x] euros</td></tr>
+          <tr><td class="italian">Posso pagare con carta?</td><td>Can I pay by card?</td></tr>
+          <tr><td class="italian">Solo contanti</td><td>Cash only</td></tr>
+          <tr><td class="italian">Il resto</td><td>The change</td></tr>
+          <tr><td class="italian">Uno scontrino, per favore</td><td>A receipt, please</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">Italy still has many cash-only places, especially at markets and small bars. <em>Solo contanti</em> is something she'll hear — make sure it registers.</div>
+
+      <div class="roleplay">
+        <strong>Price drill</strong>
+        You say a price aloud in Italian (<em>Sono dodici euro e cinquanta</em>). She writes the number. Then reverse: you write a number, she says it in Italian. Do 5–6 rounds.
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Role-play -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title">
+        <h2>Putting It Together — Market Role-Play</h2>
+        <div class="sub">Numbers in a real transaction</div>
+      </div>
+      <span class="duration">4 min</span>
+    </div>
+    <div class="section-body">
+      <div class="roleplay">
+        <strong>Scenario</strong>
+        She's at a food market. She picks up some fruit, asks the price, listens to the answer, asks if they take card, and pays.
+      </div>
+
+      <div class="dialogue">
+        <div class="d-label">Sample exchange</div>
+        <div class="line"><span class="speaker">Student:</span> <em>Buongiorno! Quanto costano queste arance?</em></div>
+        <div class="line"><span class="speaker">Vendor (you):</span> <em>Sono due euro al chilo.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Un chilo, per favore. Posso pagare con carta?</em></div>
+        <div class="line"><span class="speaker">Vendor:</span> <em>No, mi dispiace — solo contanti.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Va bene, ecco a lei.</em> (handing over cash)</div>
+        <div class="line" style="margin-top:.4rem;font-size:.82rem;color:var(--muted)">Tip: <em>ecco a lei</em> = "here you go" — a very natural handover phrase worth teaching.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Wrap-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title">
+        <h2>Wrap-up &amp; Homework</h2>
+        <div class="sub">Cement the numbers before they fade</div>
+      </div>
+      <span class="duration">2 min</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:.9rem;margin-bottom:.75rem">Quick fire: you call out numbers at random between 1–100, she says them in Italian. Then flip — you say Italian, she says the digit.</p>
+      <ul class="homework-list">
+        <li>
+          <span class="hw-icon">🔢</span>
+          <span>Count from 1–20 out loud every morning — takes 30 seconds and locks them in within a week.</span>
+        </li>
+        <li>
+          <span class="hw-icon">🛒</span>
+          <span>Next time she's shopping, mentally say the prices in Italian. Even in her home country, any price tag becomes practice.</span>
+        </li>
+        <li>
+          <span class="hw-icon">📱</span>
+          <span>Duolingo numbers module — 5 minutes daily. The repetition matters more than the duration.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Teacher notes -->
+  <div class="teacher-notes">
+    <h3>Teacher Notes</h3>
+    <ul>
+      <li>Don't drill all of 1–100 sequentially — it's boring and won't stick. Use random numbers and price-reading instead.</li>
+      <li>Prioritise 1–20 and the tens. The combining rule handles everything else.</li>
+      <li>Italian prices use a comma for decimals: €12,50 is said <em>dodici euro e cinquanta</em>. Point this out — she'll see it on every price tag.</li>
+      <li>If she finishes early: practice telling the time — <em>Che ore sono? Sono le tre.</em> It uses the same numbers and is immediately useful.</li>
+    </ul>
+  </div>
+
+  <!-- Roadmap -->
+  <div class="roadmap">
+    <h2>Lesson Series — 5-week plan</h2>
+    <div class="roadmap-list">
+      <a href="lesson-1.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 1</span>
+        <span>Greetings &amp; Polite Phrases</span>
+      </a>
+      <a href="lesson-2.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 2</span>
+        <span>Self-Introductions — <em>Mi chiamo…, Sono di…, Piacere</em></span>
+      </a>
+      <div class="roadmap-item active">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 3 ←</span>
+        <span>Numbers &amp; Money — 1–100, <em>Quanto costa?</em>, prices</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 4</span>
+        <span>Shopping — <em>Vorrei…, Posso provarlo?</em>, sizes &amp; colours</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 5</span>
+        <span>Hotel Conversations — check-in, <em>Ho una prenotazione</em>, asking for help</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Italian Lesson Plan · Beginner Travel Series
+</footer>
+
+</body>
+</html>
