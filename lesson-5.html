@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Italian Lesson 5 — Hotel Conversations</title>
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-light: #52b788;
+      --green-pale: #d8f3dc;
+      --red: #c1121f;
+      --red-pale: #fde8e8;
+      --text: #1b1b1b;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f8f5f0;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+
+    .back:hover { color: #fff; }
+
+    .flag { font-size: 3rem; display: block; margin-bottom: .5rem; }
+
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; }
+
+    header p { margin-top: .4rem; opacity: .85; font-size: .95rem; }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: .6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 99px;
+      padding: .25rem .8rem;
+      font-size: .8rem;
+      letter-spacing: .03em;
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .objective {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green-light);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: .95rem;
+    }
+
+    .objective strong { color: var(--green); }
+
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title { flex: 1; }
+    .section-title h2 { font-size: 1rem; font-weight: 700; line-height: 1.3; }
+    .section-title .sub { font-size: .8rem; color: var(--muted); }
+
+    .duration {
+      font-size: .78rem;
+      background: var(--green-pale);
+      color: var(--green);
+      border-radius: 99px;
+      padding: .2rem .65rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section-body { padding: 1.1rem 1.25rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .92rem;
+      margin-top: .75rem;
+    }
+
+    thead tr { background: var(--green-pale); }
+
+    th {
+      text-align: left;
+      padding: .5rem .75rem;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    td { padding: .55rem .75rem; border-top: 1px solid var(--border); }
+    tr:hover td { background: #fafafa; }
+
+    .italian { font-weight: 600; font-style: italic; color: #1a3a2a; }
+    .note-cell { font-size: .82rem; color: var(--muted); }
+
+    .tip {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: .75rem 1rem;
+      font-size: .87rem;
+      margin-top: 1rem;
+    }
+
+    .tip::before { content: '💡 '; }
+
+    .roleplay {
+      background: var(--red-pale);
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: .85rem 1rem;
+      font-size: .9rem;
+      margin-top: .75rem;
+    }
+
+    .roleplay strong {
+      display: block;
+      color: var(--red);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .3rem;
+    }
+
+    .dialogue {
+      background: #f8faff;
+      border: 1px solid #c7d7f5;
+      border-radius: 8px;
+      padding: .9rem 1.1rem;
+      margin-top: .85rem;
+      font-size: .9rem;
+    }
+
+    .dialogue .d-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: #4a6fa5;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .dialogue .line { margin-bottom: .3rem; }
+    .dialogue .line:last-child { margin-bottom: 0; }
+
+    .dialogue .speaker {
+      font-size: .78rem;
+      color: var(--muted);
+      min-width: 5rem;
+      display: inline-block;
+    }
+
+    .homework-list { list-style: none; padding: 0; }
+
+    .homework-list li {
+      display: flex;
+      gap: .6rem;
+      padding: .45rem 0;
+      font-size: .92rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .homework-list li:first-child { border-top: none; }
+    .hw-icon { flex-shrink: 0; }
+
+    .teacher-notes {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .teacher-notes h3 {
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--green);
+      margin-bottom: .6rem;
+    }
+
+    .teacher-notes ul { padding-left: 1.2rem; font-size: .9rem; }
+    .teacher-notes li { margin-bottom: .35rem; }
+
+    /* ── Series complete banner ── */
+    .series-complete {
+      background: var(--green);
+      color: #fff;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-top: 2.5rem;
+      text-align: center;
+    }
+
+    .series-complete .trophy { font-size: 2rem; display: block; margin-bottom: .5rem; }
+
+    .series-complete h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: .35rem; }
+
+    .series-complete p { font-size: .9rem; opacity: .88; }
+
+    .roadmap { margin-top: 2.5rem; }
+
+    .roadmap h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .roadmap-list { display: flex; flex-direction: column; gap: .6rem; }
+
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: #fff;
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      box-shadow: var(--shadow);
+      font-size: .9rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .roadmap-item.active {
+      border: 2px solid var(--green-light);
+      background: var(--green-pale);
+    }
+
+    .roadmap-item.done { opacity: .7; }
+
+    .roadmap-dot {
+      width: .65rem;
+      height: .65rem;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .roadmap-item.active .roadmap-dot,
+    .roadmap-item.done .roadmap-dot { background: var(--green); }
+
+    .roadmap-item .lesson-label {
+      font-size: .75rem;
+      color: var(--muted);
+      min-width: 4.5rem;
+    }
+
+    .roadmap-item.active .lesson-label { color: var(--green); font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back">← All lessons</a>
+  <span class="flag">🇮🇹</span>
+  <h1>Lesson 5 — Hotel Conversations</h1>
+  <p>Check-in · Requests · Asking for Help · Beginner</p>
+  <div class="badges">
+    <span class="badge">⏱ 30 minutes</span>
+    <span class="badge">🎯 Beginner</span>
+    <span class="badge">✈️ Italy-bound</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="objective">
+    <strong>Lesson objective:</strong> By the end, she can check into a hotel, handle common requests at reception, ask for things she needs, and manage any problems — all without switching to English.
+  </div>
+
+  <!-- 1. Warm-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title">
+        <h2>Warm-up — Full Series Review</h2>
+        <div class="sub">Reconnect with everything she knows</div>
+      </div>
+      <span class="duration">3 min</span>
+    </div>
+    <div class="section-body">
+      <p>Quick-fire flashcard drill across all four lessons: greetings, introductions, numbers, shopping phrases. Then set the scene: <em>"It's 8pm. You've just arrived at your hotel in Rome after a long flight. What do you need to say?"</em></p>
+      <p style="margin-top:.5rem">Let her think. This final lesson pulls everything together in the most practical context of the trip.</p>
+    </div>
+  </div>
+
+  <!-- 2. Check-in -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title">
+        <h2>Checking In</h2>
+        <div class="sub">Everything from arrival to getting the key</div>
+      </div>
+      <span class="duration">8 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">Ho una prenotazione</td><td>I have a reservation</td></tr>
+          <tr><td class="italian">Il mio nome è…</td><td>My name is…</td></tr>
+          <tr><td class="italian">Ho prenotato una camera</td><td>I booked a room</td></tr>
+          <tr><td class="italian">Una camera singola / doppia</td><td>A single / double room</td></tr>
+          <tr><td class="italian">Per quante notti?</td><td>For how many nights? (what staff will ask)</td></tr>
+          <tr><td class="italian">Per [x] notti</td><td>For [x] nights</td></tr>
+          <tr><td class="italian">A che ora è il check-out?</td><td>What time is check-out?</td></tr>
+          <tr><td class="italian">Dov'è l'ascensore?</td><td>Where is the lift?</td></tr>
+          <tr><td class="italian">Dov'è la mia camera?</td><td>Where is my room?</td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><em>Ho una prenotazione</em> is the single most important phrase in this lesson — it unlocks the whole check-in interaction. Drill it until it's automatic.</div>
+    </div>
+  </div>
+
+  <!-- 3. Requests at reception -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title">
+        <h2>Requests &amp; Asking for Things</h2>
+        <div class="sub">What to say when you need something</div>
+      </div>
+      <span class="duration">7 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">Potrei avere…?</td><td>Could I have…? (polite request)</td></tr>
+          <tr><td class="italian">Mi può portare…?</td><td>Can you bring me…?</td></tr>
+          <tr><td class="italian">Asciugamani in più</td><td>Extra towels</td></tr>
+          <tr><td class="italian">Cuscini in più</td><td>Extra pillows</td></tr>
+          <tr><td class="italian">Il Wi-Fi non funziona</td><td>The Wi-Fi isn't working</td></tr>
+          <tr><td class="italian">C'è un problema con la camera</td><td>There's a problem with the room</td></tr>
+          <tr><td class="italian">L'aria condizionata non funziona</td><td>The air conditioning isn't working</td></tr>
+          <tr><td class="italian">Può chiamarmi un taxi?</td><td>Can you call me a taxi?</td></tr>
+          <tr><td class="italian">A che ora viene servita la colazione?</td><td>What time is breakfast served?</td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><em>Potrei avere…?</em> is the most versatile request frame — more polite than <em>vorrei</em> in a hotel context. Teach her to slot anything into it: <em>Potrei avere una bottiglia d'acqua?</em></div>
+
+      <div class="roleplay">
+        <strong>Mini drill</strong>
+        You play the receptionist. She calls down to request three different things — towels, a taxi, and the breakfast time. Keep it snappy: one phrase each.
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Dealing with problems -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title">
+        <h2>Handling Problems</h2>
+        <div class="sub">When things go wrong — staying calm and clear</div>
+      </div>
+      <span class="duration">5 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="italian">Ho perso la chiave</td>
+            <td>I've lost my key</td>
+            <td class="note-cell">Most hotels use key cards now</td>
+          </tr>
+          <tr>
+            <td class="italian">La camera non è stata pulita</td>
+            <td>The room hasn't been cleaned</td>
+            <td class="note-cell"></td>
+          </tr>
+          <tr>
+            <td class="italian">C'è troppo rumore</td>
+            <td>There's too much noise</td>
+            <td class="note-cell"></td>
+          </tr>
+          <tr>
+            <td class="italian">Vorrei cambiare camera</td>
+            <td>I'd like to change rooms</td>
+            <td class="note-cell"></td>
+          </tr>
+          <tr>
+            <td class="italian">Posso avere la ricevuta?</td>
+            <td>Can I have the receipt?</td>
+            <td class="note-cell">At check-out</td>
+          </tr>
+          <tr>
+            <td class="italian">Faccio il check-out</td>
+            <td>I'm checking out</td>
+            <td class="note-cell">Simple, clear, works every time</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="tip">Most hotel problems are solved with <em>C'è un problema con…</em> + the broken thing. She doesn't need to explain it fully — the staff will take over once they understand what's wrong.</div>
+    </div>
+  </div>
+
+  <!-- 5. Role-play -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title">
+        <h2>Putting It Together — Full Hotel Stay</h2>
+        <div class="sub">Check-in to check-out in one long role-play</div>
+      </div>
+      <span class="duration">5 min</span>
+    </div>
+    <div class="section-body">
+      <div class="roleplay">
+        <strong>Scenario</strong>
+        She arrives at the hotel, checks in, discovers the Wi-Fi isn't working, calls reception for extra towels, asks what time breakfast is, then checks out the next morning and asks for the receipt.
+      </div>
+
+      <div class="dialogue">
+        <div class="d-label">Sample exchange</div>
+        <div class="line"><span class="speaker">Reception (you):</span> <em>Buonasera! Benvenuta.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Buonasera. Ho una prenotazione. Il mio nome è [name].</em></div>
+        <div class="line"><span class="speaker">Reception:</span> <em>Sì, camera 214. Per quante notti?</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Per tre notti. A che ora è il check-out?</em></div>
+        <div class="line"><span class="speaker">Reception:</span> <em>Alle undici. Ecco la sua chiave.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Grazie. Dov'è l'ascensore?</em></div>
+        <div class="line" style="margin-top:.5rem"><span class="speaker">— Later —</span></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Scusi — il Wi-Fi non funziona. E potrei avere degli asciugamani in più?</em></div>
+        <div class="line"><span class="speaker">Reception:</span> <em>Certo, li mando subito.</em></div>
+        <div class="line" style="margin-top:.5rem"><span class="speaker">— Next morning —</span></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Buongiorno. Faccio il check-out. Posso avere la ricevuta?</em></div>
+        <div class="line"><span class="speaker">Reception:</span> <em>Eccola. Buon viaggio!</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Grazie mille!</em></div>
+      </div>
+
+      <p style="margin-top:.85rem;font-size:.92rem">Run it twice — first time slowly, second time at natural speed. This is the most complete role-play in the series: it draws on all five lessons at once.</p>
+    </div>
+  </div>
+
+  <!-- 6. Wrap-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title">
+        <h2>Wrap-up &amp; Final Homework</h2>
+        <div class="sub">Consolidate the whole series before the trip</div>
+      </div>
+      <span class="duration">2 min</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:.9rem;margin-bottom:.75rem">Final runthrough: mix phrases from all five lessons at random. She should be noticeably faster and more confident than lesson 1.</p>
+      <ul class="homework-list">
+        <li>
+          <span class="hw-icon">🏨</span>
+          <span>Mentally rehearse the full check-in dialogue out loud — ideally the night before she travels. Repetition at night consolidates memory.</span>
+        </li>
+        <li>
+          <span class="hw-icon">📋</span>
+          <span>Write a personal cheat sheet: 2–3 key phrases from each lesson on a small card she can slip in her bag. It's a confidence prop — just having it reduces anxiety.</span>
+        </li>
+        <li>
+          <span class="hw-icon">🗣️</span>
+          <span>Commit to attempting Italian first in every interaction in Italy — even if she switches to English afterward. The attempt matters most.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Teacher notes -->
+  <div class="teacher-notes">
+    <h3>Teacher Notes</h3>
+    <ul>
+      <li>This lesson lands hardest if it's taught close to her travel date — the relevance makes everything stick faster.</li>
+      <li>The full role-play in section 5 is the highlight of the series. Give it time. If the earlier sections run long, trim the problems section (4) to the top 3 phrases.</li>
+      <li>End by reminding her: she now has everything she needs. Greetings, introductions, numbers, shopping, hotels — that's the whole trip covered.</li>
+      <li>If she's keen to continue after Italy: suggest Lesson 6 could be Restaurants — <em>Un tavolo per due, Il conto per favore</em> — a natural next step.</li>
+    </ul>
+  </div>
+
+  <!-- Series complete -->
+  <div class="series-complete">
+    <span class="trophy">🏆</span>
+    <h2>Series Complete — Buon Viaggio!</h2>
+    <p>Five lessons. Greetings, introductions, numbers, shopping, hotels. She's ready for Italy.</p>
+  </div>
+
+  <!-- Roadmap -->
+  <div class="roadmap">
+    <h2>Lesson Series — 5-week plan</h2>
+    <div class="roadmap-list">
+      <a href="lesson-1.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 1</span>
+        <span>Greetings &amp; Polite Phrases</span>
+      </a>
+      <a href="lesson-2.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 2</span>
+        <span>Self-Introductions — <em>Mi chiamo…, Sono di…, Piacere</em></span>
+      </a>
+      <a href="lesson-3.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 3</span>
+        <span>Numbers &amp; Money — 1–100, <em>Quanto costa?</em>, prices</span>
+      </a>
+      <a href="lesson-4.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 4</span>
+        <span>Shopping — <em>Vorrei…, Posso provarlo?</em>, sizes &amp; colours</span>
+      </a>
+      <div class="roadmap-item active">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 5 ←</span>
+        <span>Hotel Conversations — check-in, <em>Ho una prenotazione</em>, asking for help</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Italian Lesson Plan · Beginner Travel Series
+</footer>
+
+</body>
+</html>
