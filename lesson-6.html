@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Italian Lesson 6 — Restaurants</title>
+  <style>
+    :root {
+      --green: #2d6a4f;
+      --green-light: #52b788;
+      --green-pale: #d8f3dc;
+      --red: #c1121f;
+      --red-pale: #fde8e8;
+      --text: #1b1b1b;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: #f8f5f0;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      margin-bottom: 1rem;
+      letter-spacing: .03em;
+    }
+
+    .back:hover { color: #fff; }
+
+    .flag { font-size: 3rem; display: block; margin-bottom: .5rem; }
+
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -.5px; }
+
+    header p { margin-top: .4rem; opacity: .85; font-size: .95rem; }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: .6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 99px;
+      padding: .25rem .8rem;
+      font-size: .8rem;
+      letter-spacing: .03em;
+    }
+
+    main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    .objective {
+      background: var(--green-pale);
+      border-left: 4px solid var(--green-light);
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2rem;
+      font-size: .95rem;
+    }
+
+    .objective strong { color: var(--green); }
+
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-number {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .section-title { flex: 1; }
+    .section-title h2 { font-size: 1rem; font-weight: 700; line-height: 1.3; }
+    .section-title .sub { font-size: .8rem; color: var(--muted); }
+
+    .duration {
+      font-size: .78rem;
+      background: var(--green-pale);
+      color: var(--green);
+      border-radius: 99px;
+      padding: .2rem .65rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .section-body { padding: 1.1rem 1.25rem; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .92rem;
+      margin-top: .75rem;
+    }
+
+    thead tr { background: var(--green-pale); }
+
+    th {
+      text-align: left;
+      padding: .5rem .75rem;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    td { padding: .55rem .75rem; border-top: 1px solid var(--border); }
+    tr:hover td { background: #fafafa; }
+
+    .italian { font-weight: 600; font-style: italic; color: #1a3a2a; }
+    .note-cell { font-size: .82rem; color: var(--muted); }
+
+    .tip {
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      padding: .75rem 1rem;
+      font-size: .87rem;
+      margin-top: 1rem;
+    }
+
+    .tip::before { content: '💡 '; }
+
+    .roleplay {
+      background: var(--red-pale);
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: .85rem 1rem;
+      font-size: .9rem;
+      margin-top: .75rem;
+    }
+
+    .roleplay strong {
+      display: block;
+      color: var(--red);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: .3rem;
+    }
+
+    .dialogue {
+      background: #f8faff;
+      border: 1px solid #c7d7f5;
+      border-radius: 8px;
+      padding: .9rem 1.1rem;
+      margin-top: .85rem;
+      font-size: .9rem;
+    }
+
+    .dialogue .d-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: #4a6fa5;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .dialogue .line { margin-bottom: .3rem; }
+    .dialogue .line:last-child { margin-bottom: 0; }
+
+    .dialogue .speaker {
+      font-size: .78rem;
+      color: var(--muted);
+      min-width: 5rem;
+      display: inline-block;
+    }
+
+    /* ── Menu category pills ── */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: .5rem;
+      margin-top: .75rem;
+    }
+
+    .menu-card {
+      background: var(--green-pale);
+      border-radius: 8px;
+      padding: .6rem .85rem;
+    }
+
+    .menu-card .label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: .2rem;
+    }
+
+    .menu-card .italian-term {
+      font-style: italic;
+      font-weight: 600;
+      color: #1a3a2a;
+      font-size: .92rem;
+    }
+
+    .homework-list { list-style: none; padding: 0; }
+
+    .homework-list li {
+      display: flex;
+      gap: .6rem;
+      padding: .45rem 0;
+      font-size: .92rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .homework-list li:first-child { border-top: none; }
+    .hw-icon { flex-shrink: 0; }
+
+    .teacher-notes {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .teacher-notes h3 {
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--green);
+      margin-bottom: .6rem;
+    }
+
+    .teacher-notes ul { padding-left: 1.2rem; font-size: .9rem; }
+    .teacher-notes li { margin-bottom: .35rem; }
+
+    .roadmap { margin-top: 2.5rem; }
+
+    .roadmap h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .roadmap-list { display: flex; flex-direction: column; gap: .6rem; }
+
+    .roadmap-item {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      background: #fff;
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      box-shadow: var(--shadow);
+      font-size: .9rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .roadmap-item.active {
+      border: 2px solid var(--green-light);
+      background: var(--green-pale);
+    }
+
+    .roadmap-item.done { opacity: .7; }
+
+    .roadmap-dot {
+      width: .65rem;
+      height: .65rem;
+      border-radius: 50%;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    .roadmap-item.active .roadmap-dot,
+    .roadmap-item.done .roadmap-dot { background: var(--green); }
+
+    .roadmap-item .lesson-label {
+      font-size: .75rem;
+      color: var(--muted);
+      min-width: 4.5rem;
+    }
+
+    .roadmap-item.active .lesson-label { color: var(--green); font-weight: 600; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="back">← All lessons</a>
+  <span class="flag">🇮🇹</span>
+  <h1>Lesson 6 — Restaurants</h1>
+  <p>Getting a table · Ordering · Paying · Beginner</p>
+  <div class="badges">
+    <span class="badge">⏱ 30 minutes</span>
+    <span class="badge">🎯 Beginner</span>
+    <span class="badge">✈️ Italy-bound</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="objective">
+    <strong>Lesson objective:</strong> By the end, she can get a table, read the basic structure of an Italian menu, order confidently, handle dietary needs, and pay — without defaulting to English.
+  </div>
+
+  <!-- 1. Warm-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <div class="section-title">
+        <h2>Warm-up — Dining Culture</h2>
+        <div class="sub">Set expectations, prevent surprises</div>
+      </div>
+      <span class="duration">3 min</span>
+    </div>
+    <div class="section-body">
+      <p>Ask in English: <em>"What do you already know about eating out in Italy?"</em> Let her answer freely. Then fill the gaps — a few things that will genuinely help her:</p>
+      <ul style="margin-top:.75rem;padding-left:1.2rem;font-size:.92rem;">
+        <li style="margin-bottom:.35rem">Meals are long and unhurried — <em>il conto</em> (the bill) won't arrive until you ask for it.</li>
+        <li style="margin-bottom:.35rem">Lunch (<em>pranzo</em>) is still the main meal in many places. Dinner (<em>cena</em>) is typically after 8pm.</li>
+        <li>Cover charge (<em>il coperto</em>) is common — a small fixed fee per person, not a tip.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. Getting a table -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <div class="section-title">
+        <h2>Getting a Table</h2>
+        <div class="sub">From arrival to being seated</div>
+      </div>
+      <span class="duration">6 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">Un tavolo per due, per favore</td><td>A table for two, please</td></tr>
+          <tr><td class="italian">Ho prenotato a nome…</td><td>I have a reservation under the name…</td></tr>
+          <tr><td class="italian">Avete un tavolo libero?</td><td>Do you have a free table?</td></tr>
+          <tr><td class="italian">Possiamo sederci fuori?</td><td>Can we sit outside?</td></tr>
+          <tr><td class="italian">Possiamo sederci vicino alla finestra?</td><td>Can we sit by the window?</td></tr>
+          <tr><td class="italian">Il menu, per favore</td><td>The menu, please</td></tr>
+          <tr><td class="italian">Avete un menu in inglese?</td><td>Do you have a menu in English?</td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><em>Un tavolo per due</em> is the essential opener — everything else follows. Drill it with different party sizes: <em>per uno, per tre, per quattro.</em></div>
+    </div>
+  </div>
+
+  <!-- 3. Reading the menu -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <div class="section-title">
+        <h2>Reading the Menu</h2>
+        <div class="sub">How an Italian menu is structured</div>
+      </div>
+      <span class="duration">5 min</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:.92rem;margin-bottom:.75rem">Italian menus follow a fixed structure. Knowing it prevents confusion and helps her order confidently without asking for English.</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <div class="label">Starter</div>
+          <div class="italian-term">Antipasto</div>
+        </div>
+        <div class="menu-card">
+          <div class="label">First course</div>
+          <div class="italian-term">Primo</div>
+        </div>
+        <div class="menu-card">
+          <div class="label">Second course</div>
+          <div class="italian-term">Secondo</div>
+        </div>
+        <div class="menu-card">
+          <div class="label">Side dish</div>
+          <div class="italian-term">Contorno</div>
+        </div>
+        <div class="menu-card">
+          <div class="label">Dessert</div>
+          <div class="italian-term">Dolce</div>
+        </div>
+        <div class="menu-card">
+          <div class="label">Coffee</div>
+          <div class="italian-term">Caffè</div>
+        </div>
+      </div>
+      <div class="tip">Sides (<em>contorni</em>) are ordered separately and don't come automatically with the main — a common surprise for non-Italians. Worth flagging.</div>
+    </div>
+  </div>
+
+  <!-- 4. Ordering -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <div class="section-title">
+        <h2>Ordering Food &amp; Drinks</h2>
+        <div class="sub">From the waiter's greeting to the last course</div>
+      </div>
+      <span class="duration">7 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">Siete pronti per ordinare?</td><td>Are you ready to order? (what staff will say)</td></tr>
+          <tr><td class="italian">Sì, prego</td><td>Yes, go ahead / please</td></tr>
+          <tr><td class="italian">Vorrei…</td><td>I'd like… (the same frame from lesson 4)</td></tr>
+          <tr><td class="italian">Per me…</td><td>For me… (very natural when ordering)</td></tr>
+          <tr><td class="italian">Cos'è questo?</td><td>What is this?</td></tr>
+          <tr><td class="italian">Cosa consiglia?</td><td>What do you recommend?</td></tr>
+          <tr><td class="italian">Acqua naturale / frizzante</td><td>Still / sparkling water</td></tr>
+          <tr><td class="italian">Un bicchiere di vino rosso / bianco</td><td>A glass of red / white wine</td></tr>
+          <tr><td class="italian">Un caffè, per favore</td><td>A coffee, please</td></tr>
+          <tr><td class="italian">Sono allergico/a a…</td><td>I'm allergic to… (<em>-o</em> masc. / <em>-a</em> fem.)</td></tr>
+          <tr><td class="italian">Senza glutine</td><td>Gluten-free</td></tr>
+          <tr><td class="italian">Sono vegetariano/a</td><td>I'm vegetarian</td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><em>Cosa consiglia?</em> (What do you recommend?) is a brilliant phrase — it flatters the waiter, produces a good meal, and feels genuinely Italian. Make sure she uses it.</div>
+
+      <div class="roleplay">
+        <strong>Mini drill</strong>
+        You play the waiter, announcing the specials. She orders a starter, a main, and a drink — using <em>Vorrei</em> or <em>Per me</em>. Run it twice: once ordering for one, once ordering for two.
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. During & after the meal -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <div class="section-title">
+        <h2>During &amp; After the Meal</h2>
+        <div class="sub">Feedback, requests, and paying the bill</div>
+      </div>
+      <span class="duration">4 min</span>
+    </div>
+    <div class="section-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Italian</th>
+            <th>English</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="italian">È delizioso</td><td>It's delicious</td></tr>
+          <tr><td class="italian">Buonissimo!</td><td>Really good! / Delicious!</td></tr>
+          <tr><td class="italian">Scusi, ho ordinato…</td><td>Excuse me, I ordered…</td></tr>
+          <tr><td class="italian">Manca ancora…</td><td>We're still missing…</td></tr>
+          <tr><td class="italian">Il conto, per favore</td><td>The bill, please</td></tr>
+          <tr><td class="italian">Paghiamo separatamente</td><td>We're paying separately</td></tr>
+          <tr><td class="italian">Posso pagare con carta?</td><td>Can I pay by card? (from lesson 3)</td></tr>
+          <tr><td class="italian">Tenga il resto</td><td>Keep the change</td></tr>
+        </tbody>
+      </table>
+      <div class="tip"><em>Il conto, per favore</em> is the most important phrase in this section — the bill will not come on its own. She must ask. Drill it until it's instinctive.</div>
+    </div>
+  </div>
+
+  <!-- 6. Role-play -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">6</div>
+      <div class="section-title">
+        <h2>Putting It Together — Full Restaurant Visit</h2>
+        <div class="sub">Arrival to paying the bill</div>
+      </div>
+      <span class="duration">3 min</span>
+    </div>
+    <div class="section-body">
+      <div class="roleplay">
+        <strong>Scenario</strong>
+        She arrives at a trattoria, asks for a table for two outside, orders drinks and food, asks the waiter for a recommendation, compliments the food, and then requests the bill.
+      </div>
+
+      <div class="dialogue">
+        <div class="d-label">Sample exchange</div>
+        <div class="line"><span class="speaker">Waiter (you):</span> <em>Buonasera!</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Buonasera! Un tavolo per due, per favore. Possiamo sederci fuori?</em></div>
+        <div class="line"><span class="speaker">Waiter:</span> <em>Certo, prego.</em> (leads to table) <em>Ecco il menu.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Grazie. Cosa consiglia come primo?</em></div>
+        <div class="line"><span class="speaker">Waiter:</span> <em>Le tagliatelle al ragù sono ottime stasera.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Perfetto. Per me le tagliatelle. E acqua frizzante, per favore.</em></div>
+        <div class="line" style="margin-top:.5rem"><span class="speaker">— After the meal —</span></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Buonissimo! Scusi — il conto, per favore.</em></div>
+        <div class="line"><span class="speaker">Waiter:</span> <em>Eccolo. Sono ventitré euro.</em></div>
+        <div class="line"><span class="speaker">Student:</span> <em>Ecco a lei. Tenga il resto.</em></div>
+      </div>
+
+      <p style="margin-top:.85rem;font-size:.92rem">Run it twice. On the second pass, she orders something different and handles a missing dish. Keep the pace natural — restaurant Italian is fast.</p>
+    </div>
+  </div>
+
+  <!-- 7. Wrap-up -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-number">7</div>
+      <div class="section-title">
+        <h2>Wrap-up &amp; Homework</h2>
+        <div class="sub">Consolidate before the next meal in Italy</div>
+      </div>
+      <span class="duration">2 min</span>
+    </div>
+    <div class="section-body">
+      <p style="font-size:.9rem;margin-bottom:.75rem">Quick runthrough: you play the waiter from arrival to bill — she handles the whole interaction without prompts. Time it. The confidence boost when it flows is real.</p>
+      <ul class="homework-list">
+        <li>
+          <span class="hw-icon">🍽️</span>
+          <span>Find the menu of a restaurant she plans to visit in Italy and identify the <em>antipasti, primi, secondi</em> and <em>dolci</em>. Knowing the structure before she arrives removes 90% of menu anxiety.</span>
+        </li>
+        <li>
+          <span class="hw-icon">☕</span>
+          <span>Learn the Italian coffee order she'll actually use: <em>un caffè</em> (espresso), <em>un cappuccino</em>, <em>un caffè macchiato</em>. Italians order by name — not "a small latte".</span>
+        </li>
+        <li>
+          <span class="hw-icon">🗣️</span>
+          <span>Say <em>Il conto, per favore</em> out loud ten times right now. It sounds trivial — but when the moment comes in a busy trattoria, automaticity is everything.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Teacher notes -->
+  <div class="teacher-notes">
+    <h3>Teacher Notes</h3>
+    <ul>
+      <li>Don't teach tipping culture as a rule — it's inconsistent across Italy. If she asks: rounding up or leaving small change is appreciated but never expected.</li>
+      <li><em>Cosa consiglia?</em> is genuinely worth practising until it feels natural — it's the phrase that most makes a tourist feel like a traveller.</li>
+      <li>The menu structure section (3) can be cut short if time is tight — it's background knowledge, not survival vocab.</li>
+      <li>If she has a specific dietary requirement, spend extra time on the allergy/preference phrases and make sure she can say it clearly and confidently. This one matters for safety, not just comfort.</li>
+    </ul>
+  </div>
+
+  <!-- Roadmap -->
+  <div class="roadmap">
+    <h2>Lesson Series</h2>
+    <div class="roadmap-list">
+      <a href="lesson-1.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 1</span>
+        <span>Greetings &amp; Polite Phrases</span>
+      </a>
+      <a href="lesson-2.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 2</span>
+        <span>Self-Introductions — <em>Mi chiamo…, Sono di…, Piacere</em></span>
+      </a>
+      <a href="lesson-3.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 3</span>
+        <span>Numbers &amp; Money — 1–100, <em>Quanto costa?</em>, prices</span>
+      </a>
+      <a href="lesson-4.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 4</span>
+        <span>Shopping — <em>Vorrei…, Posso provarlo?</em>, sizes &amp; colours</span>
+      </a>
+      <a href="lesson-5.html" class="roadmap-item done">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 5</span>
+        <span>Hotel Conversations — check-in, <em>Ho una prenotazione</em>, asking for help</span>
+      </a>
+      <div class="roadmap-item active">
+        <div class="roadmap-dot"></div>
+        <span class="lesson-label">Lesson 6 ←</span>
+        <span>Restaurants — <em>Un tavolo per due, Il conto per favore</em>, ordering</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Italian Lesson Plan · Beginner Travel Series
+</footer>
+
+</body>
+</html>
